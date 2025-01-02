@@ -1,0 +1,22 @@
+docker run \
+-v $(pwd):$(pwd) \
+-w $(pwd) \
+-rm \
+alumisinc/regenie_v20241002 \
+regenie \
+  --step 1 \
+  --bed for_regenie/gsa_pmra_imputed_regenie_step1_set_no_dupes \
+  --extract for_regenie/gsa_pmra_imputed_regenie_step1_set.snpids \
+  --covarFile ms_disease_covarfile.covarfile \
+  --covarColList PC{1:10},age,gender_coded \
+  --phenoFile ms_disease_covarfile.phenofile \
+  --phenoColList ms_all_comers,relapsing_remitting_ms_coded,secondary_progressive_ms_coded,rrms_with_spms,primary_progressive_ms_coded,primary_progressive_vs_rrsms_and_spms \
+  --bsize 1000 \
+  --bt \
+  --lowmem \
+  --lowmem-prefix tmp_rg \
+  --out test_ms_step_1
+
+docker run \
+-v $(pwd):$(pwd) \
+-w $(pwd) -it --rm alumisinc/regenie_v20241002 /bin/bash

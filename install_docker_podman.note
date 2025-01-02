@@ -1,0 +1,5 @@
+podman pull alumisinc/gwaslab_v20241106
+podman run \
+-v /mnt/session_data/:$(pwd) \
+-w $(pwd) -it --rm alumisinc/gwaslab_v20241106 /bin/bash
+
